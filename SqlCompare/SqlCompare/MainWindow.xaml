@@ -1,0 +1,56 @@
+﻿<Window x:Class="SqlCompare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SqlCompare"
+        xmlns:control="clr-namespace:SqlCompare.Controls"
+        mc:Ignorable="d"
+        Title="Sql Compare" Height="620" Width="800"
+        x:Name="BaseWindow">
+    <Window.Resources>
+        <ResourceDictionary Source="Style.xaml"/>
+    </Window.Resources>
+    
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition x:Name="mainWorkspace"></RowDefinition>
+            <RowDefinition x:Name="amountStrip" Height="Auto"></RowDefinition>
+            <RowDefinition x:Name="startStrip" Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        
+        <Menu Height="Auto" VerticalAlignment="Top" Grid.ColumnSpan="6">
+            <MenuItem Header="Подключение" Click="MenuConnect_Click"></MenuItem>
+            <MenuItem Header="Очистить всё" Click="MenuClear_Click"></MenuItem>
+        </Menu>
+
+        <ScrollViewer x:Name="scroll" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+            <StackPanel x:Name="workingArea">
+            </StackPanel>
+        </ScrollViewer>
+
+
+        <Button x:Name="btnAdd" Click="BtnAdd_Click" Style="{StaticResource forBtnAdd}"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6">+</Button>
+
+        <StackPanel Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2">
+            <Label>Искать лучшее решение по:</Label>
+            <RadioButton x:Name="rbTime" IsChecked="True">времени</RadioButton>
+            <RadioButton x:Name="rbMemory">памяти</RadioButton>
+        </StackPanel>
+        <Button x:Name="btnStart" Click="BtnStart_Click" IsEnabled="false" Grid.Row="3" Grid.Column="5" Style="{StaticResource btnStyle}">Запустить</Button>
+
+
+    </Grid>
+
+
+</Window>
